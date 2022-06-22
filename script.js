@@ -8,9 +8,8 @@ const passengerNameUI = document.getElementById("passengerName");
 const passengerAgeUI = document.getElementById("passengerAgeUI");
 const kmsUI = document.getElementById("kmsUI");
 const ticketPriceUI = document.getElementById("ticketPrice");
-const discountUI = document.getElementById("discount")
-const ticketUI = document.getElementById("ticketUI")
-
+const discountUI = document.getElementById("discount");
+const ticketUI = document.getElementById("ticketUI");
 
 //Event listener
 
@@ -22,7 +21,6 @@ const lastName = document.getElementById("lastName");
 const kms = document.getElementById("kms");
 
 ticketBtn.addEventListener("click", function () {
-
   //Calcolo prezzo
   let price = kms.value * 0.21;
   let ticketPrice = price.toFixed(2);
@@ -56,19 +54,25 @@ ticketBtn.addEventListener("click", function () {
   //Logica sconto
   if (selectedIndex === 0) {
     ticketPriceUI.innerText = priceUnder18.toFixed(2) + " €";
-    discountUI.innerText = "Sconto 20% per under 18"
+    discountUI.innerText = "Sconto 20% per under 18";
+    discountUI.style.color = 'red'
+    
   } else if (selectedIndex === 2) {
     ticketPriceUI.innerText = priceOver65.toFixed(2) + " €";
-    discountUI.innerText = "Sconto 40% per over 65"
+    discountUI.innerText = "Sconto 40% per over 65";
+    discountUI.style.color = 'red'
 
   }
 
-  ticketUI.classList.remove('d-none')
+  ticketUI.classList.remove("d-none");
 });
 
 //Cancel Btn
 cancelBtn.addEventListener("click", function () {
-  firstName.value = ''
-  lastName.value = ''
-  kms.value = ''
+    //Reset values
+  firstName.value = "";
+  lastName.value = "";
+  kms.value = "";
+  //Hide ticketUI
+  ticketUI.classList.add("d-none");
 });

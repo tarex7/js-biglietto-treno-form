@@ -14,13 +14,15 @@
     />
     <!-- Css -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="card p-4 bg-dark text-white text-center my-2">
-            <h1 class="display-5 my-4">Calcola il prezzo del tuo biglietto</h1>
+            <h1 class="display-5 my-4">Calcola il prezzo del tuo biglietto <i class="fa-solid fa-train-subway"></i></h1>
             <div class="form mx-auto">
               <div class="mb-3">
                 <!-- First name -->
@@ -29,6 +31,7 @@
                   class="form-control my-5"
                   id="firstName"
                   placeholder="Inserisci il tuo nome"
+                  value="Salvatore"
                 />
                 <!-- Last name -->
                 <input
@@ -36,6 +39,8 @@
                   class="form-control my-5"
                   id="lastName"
                   placeholder="Inserisci il tuo cognome"
+                  value="Demontis"
+
                 />
                 <!-- Trip length -->
                 <input
@@ -43,7 +48,7 @@
                   class="form-control my-5"
                   id="kms"
                   placeholder="Inserisci chilometri da percorrere"
-                  
+                  value="100"
                 />
                 <!-- User age -->
                 <!-- PROVA -->
@@ -93,20 +98,21 @@
               </div>
               <div class="ticket-info text-center border mx-3 w-75 p-4 rounded">
                 <div class="row h-100 border">
-                  <div class="col py-2 bg-light text-dark">
-                    <h3 class="mb-5">Offerta</h3>
-                    <h3><span id="discount">Standard</span></h3>
-                  </div>
+                    <div class="col py-2 bg-light text-dark">
+                        <h3 class="mb-5">Codice CP</h3>
+                        <h3>07040</h3>
+                      </div>
                   <div class="col py-2">
                     <h3 class="mb-5">Carrozza</h3>
                     <h3>Numero 5</h3>
                   </div>
+                  
                   <div class="col py-2 bg-light text-dark">
-                    <h3 class="mb-5">Codice CP</h3>
-                    <h3>07040</h3>
+                    <h3 class="mb-5">Tariffa</h3>
+                    <h3><span id="discount">Standard</span></h3>
                   </div>
                   <div class="col py-2">
-                    <h3 class="mb-5">Costo biglietto</h3>
+                    <h3 class="mb-5">Costo</h3>
                     <h3><span id="ticketPrice"></span></h3>
                   </div>
                 </div>
