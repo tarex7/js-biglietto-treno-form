@@ -10,8 +10,7 @@ const kmsUI = document.getElementById("kmsUI");
 const ticketPriceUI = document.getElementById("ticketPrice");
 const discountUI = document.getElementById("discount");
 const ticketUI = document.getElementById("ticketUI");
-
-//Event listener
+const cpCodeUI = document.getElementById("cpCode");
 
 //Nome passeggero
 const firstName = document.getElementById("firstName");
@@ -19,6 +18,8 @@ const firstName = document.getElementById("firstName");
 const lastName = document.getElementById("lastName");
 //Km da percorrere
 const kms = document.getElementById("kms");
+
+//Event listener
 
 ticketBtn.addEventListener("click", function () {
   //Calcolo prezzo
@@ -32,6 +33,9 @@ ticketBtn.addEventListener("click", function () {
   let priceUnder18 = ticketPrice - discount20;
   let priceOver65 = ticketPrice - discount40;
 
+  //Cp Generator
+  const rndCP = Math.floor(Math.random() * 99999);
+  
   //Età passeggero
 
   let passengerAge;
@@ -42,7 +46,7 @@ ticketBtn.addEventListener("click", function () {
   passengerAge = document.getElementById("passengerAge");
   selectedIndex = passengerAge.selectedIndex;
   selectedOption = passengerAge.options[selectedIndex];
-  selectedOptionText = selectedOption.text;
+  const selectedOptionText = selectedOption.text;
 
   //mostra in UI
   ticketPriceUI.innerText = ticketPrice;
@@ -50,29 +54,30 @@ ticketBtn.addEventListener("click", function () {
   passengerAgeUI.innerText = selectedOptionText;
   kmsUI.innerText = kms.value + " Km";
   ticketPriceUI.innerText = ticketPrice + " €";
+  cpCodeUI.innerText = rndCP;
 
   //Logica sconto
+  //Under 18
   if (selectedIndex === 0) {
     ticketPriceUI.innerText = priceUnder18.toFixed(2) + " €";
     discountUI.innerText = "Sconto 20% per under 18";
-    discountUI.style.color = 'red'
-    
+    discountUI.style.color = "red";
+    //Over 65
   } else if (selectedIndex === 2) {
     ticketPriceUI.innerText = priceOver65.toFixed(2) + " €";
     discountUI.innerText = "Sconto 40% per over 65";
-    discountUI.style.color = 'red'
-
+    discountUI.style.color = "red";
   }
-
+  //Mostra biblietto
   ticketUI.classList.remove("d-none");
 });
 
 //Cancel Btn
 cancelBtn.addEventListener("click", function () {
-    //Reset values
+  //Reset valori
   firstName.value = "";
   lastName.value = "";
   kms.value = "";
-  //Hide ticketUI
+  //Nascondi ticketUI
   ticketUI.classList.add("d-none");
 });

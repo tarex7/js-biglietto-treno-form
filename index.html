@@ -31,7 +31,6 @@
                   class="form-control my-5"
                   id="firstName"
                   placeholder="Inserisci il tuo nome"
-                  value="Salvatore"
                 />
                 <!-- Last name -->
                 <input
@@ -39,7 +38,6 @@
                   class="form-control my-5"
                   id="lastName"
                   placeholder="Inserisci il tuo cognome"
-                  value="Demontis"
 
                 />
                 <!-- Trip length -->
@@ -48,7 +46,6 @@
                   class="form-control my-5"
                   id="kms"
                   placeholder="Inserisci chilometri da percorrere"
-                  value="100"
                 />
                 <!-- User age -->
                 <!-- PROVA -->
@@ -78,7 +75,6 @@
           <div class="card bg-dark text-white my-2">
             <div id="ticketUI" class="d-flex ticket d-none p-4">
               <div class="passenger-info bg-light text-dark p-2 rounded">
-                <div class="divider"></div>
 
                 <h3>
                   Nome passeggero: <br />
@@ -99,20 +95,20 @@
               <div class="ticket-info text-center border mx-3 w-75 p-4 rounded">
                 <div class="row h-100 border">
                     <div class="col py-2 bg-light text-dark">
-                        <h3 class="mb-5">Codice CP</h3>
-                        <h3>07040</h3>
+                        <h3 class="mb-5 border border-dark p-2">Codice CP</h3>
+                        <h3 id="cpCode">07040</h3>
                       </div>
                   <div class="col py-2">
-                    <h3 class="mb-5">Carrozza</h3>
+                    <h3 class="mb-5 border border-light p-2">Carrozza</h3>
                     <h3>Numero 5</h3>
                   </div>
                   
                   <div class="col py-2 bg-light text-dark">
-                    <h3 class="mb-5">Tariffa</h3>
+                    <h3 class="mb-5 border border-dark p-2">Tariffa</h3>
                     <h3><span id="discount">Standard</span></h3>
                   </div>
                   <div class="col py-2">
-                    <h3 class="mb-5">Costo</h3>
+                    <h3 class="mb-5 border border-light p-2">Costo</h3>
                     <h3><span id="ticketPrice"></span></h3>
                   </div>
                 </div>
