@@ -3,13 +3,18 @@
 const ticketBtn = document.getElementById("ticketBtn");
 //Pulsante annulla
 const cancelBtn = document.getElementById("cancelBtn");
-
+//Nome passeggero UI
 const passengerNameUI = document.getElementById("passengerName");
 const passengerAgeUI = document.getElementById("passengerAgeUI");
+//Km UI
 const kmsUI = document.getElementById("kmsUI");
+//Prezzo biglietto UI
 const ticketPriceUI = document.getElementById("ticketPrice");
+//Sonto UI
 const discountUI = document.getElementById("discount");
+//Biglietto UI
 const ticketUI = document.getElementById("ticketUI");
+//Codice CP UI
 const cpCodeUI = document.getElementById("cpCode");
 
 //Nome passeggero
@@ -19,9 +24,32 @@ const lastName = document.getElementById("lastName");
 //Km da percorrere
 const kms = document.getElementById("kms");
 
+//Reset func
+function reset() {
+  //Reset valori
+  firstName.value = "";
+  lastName.value = "";
+  kms.value = "";
+  
+}
+
 //Event listener
 
 ticketBtn.addEventListener("click", function () {
+  //Validazione input
+  if (firstName.value === "" || !isNaN(firstName.value)) {
+    alert("Per favore inserisci nome del passeggero");
+    return;
+  }
+  if (lastName.value === "" || !isNaN(lastName.value)) {
+    alert("Per favore inserisci cognome del passeggero");
+    return;
+  }
+  if (isNaN(parseInt(kms.value))) {
+    alert("Per favore inserisci numero dei chilometri da percorrere");
+    return;
+  }
+
   //Calcolo prezzo
   let price = kms.value * 0.21;
   let ticketPrice = price.toFixed(2);
@@ -34,16 +62,15 @@ ticketBtn.addEventListener("click", function () {
   let priceOver65 = ticketPrice - discount40;
 
   //Cp Generator
-  const rndCP = Math.floor(Math.random() * 99999);
-  
+  const rndCP = Math.floor(Math.random() * 100000);
+
   //Età passeggero
 
   let passengerAge;
-  let selectedIndex;
-  let selectedOption;
 
   //Select options
   passengerAge = document.getElementById("passengerAge");
+  console.log(passengerAge.value);
   selectedIndex = passengerAge.selectedIndex;
   selectedOption = passengerAge.options[selectedIndex];
   const selectedOptionText = selectedOption.text;
@@ -58,26 +85,27 @@ ticketBtn.addEventListener("click", function () {
 
   //Logica sconto
   //Under 18
-  if (selectedIndex === 0) {
+  if (passengerAge.value == 1) {
     ticketPriceUI.innerText = priceUnder18.toFixed(2) + " €";
     discountUI.innerText = "Sconto 20% per under 18";
     discountUI.style.color = "red";
     //Over 65
-  } else if (selectedIndex === 2) {
+  } else if (passengerAge.value == 3) {
     ticketPriceUI.innerText = priceOver65.toFixed(2) + " €";
     discountUI.innerText = "Sconto 40% per over 65";
     discountUI.style.color = "red";
   }
   //Mostra biblietto
   ticketUI.classList.remove("d-none");
+
+  //Svuota i campi
+  //Reset valori
+  reset();
 });
 
 //Cancel Btn
-cancelBtn.addEventListener("click", function () {
-  //Reset valori
-  firstName.value = "";
-  lastName.value = "";
-  kms.value = "";
+cancelBtn.addEventListener("click", reset);
+cancelBtn.addEventListener('click', function() {
   //Nascondi ticketUI
   ticketUI.classList.add("d-none");
-});
+})
